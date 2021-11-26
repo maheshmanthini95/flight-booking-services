@@ -1,9 +1,13 @@
 package com.flight_booking.admin.pojo;
 
+import javax.validation.constraints.NotBlank;
+
 public class LoginRequest {
+    @NotBlank
     private String username;
 
-    private String pwd;
+    @NotBlank
+    private String password;
 
     public String getUsername() {
         return username;
@@ -13,11 +17,11 @@ public class LoginRequest {
         this.username = username;
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

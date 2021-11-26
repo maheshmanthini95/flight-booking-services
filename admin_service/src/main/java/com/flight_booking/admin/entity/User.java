@@ -1,12 +1,24 @@
 package com.flight_booking.admin.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
+@Table(	name = "user",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "userName")
+        })
 public class User extends BaseEntity {
+    @NotBlank
+    @Size(max = 20)
     private String userName;
 
-    private String pwdHash;
+    @NotBlank
+    @Size(max = 120)
+    private String password;
 
     public String getUserName() {
         return userName;
@@ -16,11 +28,11 @@ public class User extends BaseEntity {
         this.userName = userName;
     }
 
-    public String getPwdHash() {
-        return pwdHash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPwdHash(String pwdHash) {
-        this.pwdHash = pwdHash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

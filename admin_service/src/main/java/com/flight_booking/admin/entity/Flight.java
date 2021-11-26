@@ -10,11 +10,13 @@ public class Flight extends BaseEntity {
     @ManyToOne
     private Airline airline;
 
-    private String from;
+    @ManyToOne
+    private Airport from;
 
-    private String to;
+    @ManyToOne
+    private Airport to;
 
-    private Integer startTime;
+    private Integer departureTime;
 
     private Integer arrivalTime;
 
@@ -38,28 +40,28 @@ public class Flight extends BaseEntity {
         this.airline = airline;
     }
 
-    public String getFrom() {
+    public Airport getFrom() {
         return from;
     }
 
-    public void setFrom(String from) {
+    public void setFrom(Airport from) {
         this.from = from;
     }
 
-    public String getTo() {
+    public Airport getTo() {
         return to;
     }
 
-    public void setTo(String to) {
+    public void setTo(Airport to) {
         this.to = to;
     }
 
-    public Integer getStartTime() {
-        return startTime;
+    public Integer getDepartureTime() {
+        return departureTime;
     }
 
-    public void setStartTime(Integer startTime) {
-        this.startTime = startTime;
+    public void setDepartureTime(Integer departureTime) {
+        this.departureTime = departureTime;
     }
 
     public Integer getArrivalTime() {
