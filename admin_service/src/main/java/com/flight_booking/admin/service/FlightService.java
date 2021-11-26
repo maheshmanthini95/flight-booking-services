@@ -70,4 +70,35 @@ public class FlightService {
 
         return result;
     }
+
+    /**
+     * Method to get complete flight details by id.
+     * @param flightId
+     * @return
+     */
+    public FlightSearchResponse getFlightDetails(Integer flightId) {
+        Flight flight = flightRepository.findById(flightId).get();
+
+        if (flight == null) {
+            return null;
+        }
+        FlightSearchResponse response = new FlightSearchResponse();
+        response.setFlightId(flight.getId());
+        response.setFlightNumber(flight.getFlightNumber());
+        response.setAirlineId(flight.getAirline().getId());
+        response.setAirlineName(flight.getAirline().getAirlineName());
+        response.setFrom(flight.getFrom().getCity());
+        response.setTo(flight.getTo().getCity());
+
+        Integer arrivalTime = flight.getArrivalTime();
+        Integer departureTime = flight.getDepartureTime();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("Hmm");
+        LocalTime aTime = LocalTime.parse(arrivalTime+"", formatter);
+        LocalTime dTime = LocalTime.parse(departureTime+"", formatter);
+        response.setDepartureTime(dTime.toString());
+        response.setArrivalTime(aTime.toString());
+
+        return response;
+    }
 }

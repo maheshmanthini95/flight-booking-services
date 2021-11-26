@@ -21,9 +21,6 @@ public class TicketBookingService {
     @Autowired
     TicketBookingRepository ticketBookingRepository;
 
-    @Autowired
-    TicketRepository ticketRepository;
-
     /**
      * Method to create ticket booking and ticket entities.
      * @param flightId
